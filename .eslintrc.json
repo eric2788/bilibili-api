@@ -6,6 +6,8 @@
     "prettier"
   ],
   "rules": {
+    "@typescript-eslint/no-namespace": "off",
+    "@typescript-eslint/ban-types": "off",
     "no-unused-vars": "off"
   },
   "parser": "@typescript-eslint/parser"

@@ -9,8 +9,11 @@
       "emitDecoratorMetadata": true,
       "experimentalDecorators": true,
       "allowSyntheticDefaultImports": true,
-      "declaration": false,
-      "outDir": "dist"
+      "declaration": true,
+      "outDir": "dist",
+      "paths": {
+          "@*": ["./src/*"]
+      }
   },
   "include": ["src"],
   "exclude": ["node_modules", "**/*.spec.ts"]
