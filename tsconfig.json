@@ -12,9 +12,13 @@
       "declaration": true,
       "outDir": "dist",
       "paths": {
-          "@*": ["./src/*"]
+          "@*": ["./src/*"],
+          "bilibili-api": ["./src/index"],
       }
   },
-  "include": ["src"],
+  "include": [
+    "./**/*.d.ts",
+    "./**/*.ts",
+  ],
   "exclude": ["node_modules", "**/*.spec.ts"]
 }
