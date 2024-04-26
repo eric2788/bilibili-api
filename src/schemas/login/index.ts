@@ -3,7 +3,7 @@ import * as qrcode from "./qrcode"
 import { Logout } from './logout'
 import { HttpDefine } from "@schemas/common"
 
-export type LoginSchema = {
+export type Schema = {
     'cookie/refresh': cookie.Refresh.Schema
     'cookie/required': cookie.Required.Schema
     'qrcode/apply/tv': qrcode.ApplyTv.Schema
@@ -13,9 +13,9 @@ export type LoginSchema = {
     'logout': Logout.Schema
 }
 
-export type LoginSchemaKey = keyof LoginSchema
+export type SchemaKey = keyof Schema
 
-export const defines: Record<LoginSchemaKey, HttpDefine> = {
+export const defines: Record<SchemaKey, HttpDefine> = {
     'cookie/refresh': cookie.Refresh.defines,
     'cookie/required': cookie.Required.defines,
     'qrcode/apply/tv': qrcode.ApplyTv.defines,

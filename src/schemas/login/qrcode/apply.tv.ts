@@ -2,7 +2,7 @@ import { HttpDefine, HttpSchema, V1Response } from "@schemas/common";
 
 export namespace ApplyTv {
 
-    export type Schema = HttpSchema<never, Output>
+    export type Schema = HttpSchema<{}, Output>
 
     export const defines: HttpDefine = {
         method: 'GET',

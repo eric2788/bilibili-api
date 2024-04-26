@@ -3,7 +3,7 @@ import { HttpDefine, HttpSchema, V1Response } from "@schemas/common"
 
 export namespace Types {
 
-    export type Schema = HttpSchema<never, Output>
+    export type Schema = HttpSchema<{}, Output>
 
     export const defines: HttpDefine = {
         method: 'GET',
@@ -20,6 +20,6 @@ export namespace Types {
         remark: string
         ctime: string
         mtime: string
-        controls: unknown[] | null
+        controls: any[] | null
     }[]>
 }

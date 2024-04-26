@@ -1,7 +1,8 @@
+import { HttpDefine } from '@schemas/common'
 import * as action from './action'
 import * as appeal from './appeal'
 
-export type VideoSchema = {
+export type Schema = {
     'action/coin/app': action.AppCoin.Schema
     'action/coin/web': action.WebCoin.Schema
     'action/coined': action.Coined.Schema
@@ -18,9 +19,9 @@ export type VideoSchema = {
     'appeal/types': appeal.Types.Schema
 }
 
-export type VideoSchemaKey = keyof VideoSchema
+export type SchemaKey = keyof Schema
 
-export const defines = {
+export const defines: Record<SchemaKey, HttpDefine> = {
     'action/coin/app': action.AppCoin.defines,
     'action/coin/web': action.WebCoin.defines,
     'action/coined': action.Coined.defines,
