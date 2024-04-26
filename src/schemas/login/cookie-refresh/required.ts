@@ -1,4 +1,4 @@
-import { HttpDefine, HttpSchema, V1Response } from "@schemas/common";
+import { HttpDefine, HttpSchema, V1Response } from "@schemas/common"
 
 export namespace Required {
 

@@ -1,6 +1,6 @@
-import { defines, Schema, SchemaKey } from "@schemas/video";
-import { BaseClient, RequestConfig } from "./base";
-import { HttpDefine } from "@schemas/common";
+import { defines, Schema, SchemaKey } from "@schemas/video"
+import { BaseClient, RequestConfig } from "./base"
+import { HttpDefine } from "@schemas/common"
 
 export class VideoClient extends BaseClient<Schema> {
 

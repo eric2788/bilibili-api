@@ -1,4 +1,4 @@
-import { CommonResponse, HttpDefine, HttpSchema } from "@schemas/common";
+import { CommonResponse, HttpDefine, HttpSchema } from "@schemas/common"
 
 
 export namespace ScanWeb {

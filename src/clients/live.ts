@@ -1,6 +1,6 @@
-import { HttpDefine } from "@schemas/common";
-import { defines, Schema, SchemaKey } from "@schemas/live";
-import { BaseClient, RequestConfig } from "./base";
+import { HttpDefine } from "@schemas/common"
+import { defines, Schema, SchemaKey } from "@schemas/live"
+import { BaseClient, RequestConfig } from "./base"
 
 export class LiveClient extends BaseClient<Schema> {
 

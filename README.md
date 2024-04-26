@@ -23,7 +23,23 @@ npm install bilibili-api
 
 ## Usage
 
-Simple
+### Simple
+
+```ts
+import { ApiClient } from "bilibili-api";
+
+const client = await ApiClient.create()
+
+client.live.emit("info/room", { room_id: 1 }).then((res) => {
+  console.log(res)
+})
+
+client.video.emit("action/like/web", { bvid: "1mK4y1C7Bz", like: 1, csrf: "" }).then((res) => {
+  console.log(res)
+})
+```
+
+### Partial
 
 ```js
 import { LiveClient, VideoClient } from "bilibili-api"
@@ -159,9 +175,9 @@ e.g. `LiveClient`
 
 file: `clients/live.ts`
 ```ts
-import { HttpDefine } from "@schemas/common";
-import { defines, Schema, SchemaKey } from "@schemas/live";
-import { BaseClient, RequestConfig } from "./base";
+import { HttpDefine } from "@schemas/common"
+import { defines, Schema, SchemaKey } from "@schemas/live"
+import { BaseClient, RequestConfig } from "./base"
 
 export class LiveClient extends BaseClient<Schema> {
 
@@ -186,10 +202,69 @@ export class LiveClient extends BaseClient<Schema> {
 
 file: `index.ts`
 ```ts
-export * from '@clients/login'
-export * from '@clients/video'
-export * from '@clients/live' // added
+import { LiveClient } from "@clients/live" // added
+import { LoginClient } from "@clients/login"
+import { VideoClient } from "@clients/video"
+import { AxiosInstance } from 'axios'
+export class ApiClient {
+
+    /**
+     * Creates an instance of the ApiClient based on the environment.
+     * 
+     * @returns {ApiClient} The created instance of the ApiClient.
+     */
+    static create(): ApiClient {
+        let create: Function
+        if (typeof window === 'undefined') {
+            const fromNodeJS = require('@factories/node').default
+            create = fromNodeJS
+        } else {
+            const fromBrowser = require('@factories/browser').default
+            create = fromBrowser
+        }
+        return create()
+    }
+
+    public constructor(axios: AxiosInstance) {
+        this.login = new LoginClient(axios)
+        this.video = new VideoClient(axios)
+        this.live = new LiveClient(axios) // added
+    }
+
+    public readonly login: LoginClient
+    public readonly video: VideoClient
+    public readonly live: LiveClient // added
+
+}
+
+
+export {
+    LiveClient, // added for partial
+    LoginClient,
+    VideoClient
+}
+
 ```
+
+usage
+```ts
+import { ApiClient, LiveClient } from "bilibili-api"
+
+// use with ApiClient
+const api = ApiClient.create()
+api.live.emit("info/user", { mid: 1 }).then((res) => {
+  // res is type-safe
+  console.log(res)
+})
+
+// use with LiveClient
+const live = new LiveClient(axios)
+live.emit("info/user", { mid: 1 }).then((res) => {
+  // res is type-safe
+  console.log(res)
+})
+```
+
 
 Notices:
 - all implementations are preset from `BaseClient`

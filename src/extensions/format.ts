@@ -16,7 +16,7 @@ declare global {
  */
 String.prototype.formatPath = function(this: string, params: object): string {
     let template = this
-    const args = /{([^{}]*)}/g.exec(template)
+    const args = /{([^{}]*)}/g.exec(template) ?? []
     for (const arg of args) {
         const key = arg.slice(1, -1)
         template = template.replace(arg, params[key])

@@ -1,7 +1,7 @@
 
-import { HttpDefine } from "@schemas/common";
-import { defines, Schema, SchemaKey } from "@schemas/login";
-import { BaseClient, RequestConfig } from "./base";
+import { HttpDefine } from "@schemas/common"
+import { defines, Schema, SchemaKey } from "@schemas/login"
+import { BaseClient, RequestConfig } from "./base"
 
 export class LoginClient extends BaseClient<Schema> {
 
