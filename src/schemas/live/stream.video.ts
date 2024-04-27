@@ -1,7 +1,7 @@
 import { HttpDefine, HttpSchema, V1Response } from "@schemas/common"
 
 
-export namespace Stream {
+export namespace StreamVideo {
 
     export type Schema = HttpSchema<Input, Output>
 
